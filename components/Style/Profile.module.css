@@ -1,0 +1,19 @@
+.img {
+  /* width: 15%;
+  height: 15%; */
+  border-radius: 50%;
+}
+
+.name {
+  color: white;
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  /* justify-content: flex-start; */
+}
+
+.wrap > * {
+  margin-left: 12%;
+}
