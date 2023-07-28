@@ -19,7 +19,7 @@ const SignUpPage = () => {
 
   const onHandleSignUp = async () => {
     try {
-      const response = await fetch("/api/signup", {
+      const response = await fetch("/api/auth/SignUp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
