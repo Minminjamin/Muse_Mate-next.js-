@@ -1,13 +1,21 @@
-import "@/styles/globals.css";
+// import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import KakaoLoginn from "./Login/KakaoLogin";
+import GoogleLogin from "./Login/GoogleLogin";
+import SignUpPage from "./Login/SignUpPage";
+import SideBar from "./SideBar/SideBar";
+// import "main.modlue.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider session={pageProps.session}>
       <div>
-        <KakaoLoginn />
+        <SideBar />
+        {/* <KakaoLoginn />
+        <GoogleLogin />
+        <SignUpPage /> */}
+        {/* <SignUpPage /> */}
         <Component {...pageProps} />
       </div>
     </SessionProvider>
