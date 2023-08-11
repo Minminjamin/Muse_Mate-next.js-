@@ -5,12 +5,6 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-interface Session {
-  user: {
-    id?: string | null | undefined;
-  };
-}
-
 export const authOptions: NextAuthOptions = {
   providers: [
     KakaoProvider({

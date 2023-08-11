@@ -9,10 +9,6 @@ export default function App({ Component, pageProps }: AppProps) {
     <SessionProvider session={pageProps.session}>
       <div>
         <SideBar />
-        {/* <KakaoLoginn />
-        <GoogleLogin />
-        <SignUpPage /> */}
-        {/* <SignUpPage /> */}
         <Component {...pageProps} />
       </div>
     </SessionProvider>
