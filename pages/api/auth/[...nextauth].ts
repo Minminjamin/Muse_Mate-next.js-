@@ -41,7 +41,7 @@ export const authOptions: NextAuthOptions = {
               id: "",
               name: user.name!,
               email: user.email!,
-              profile_img: "",
+              profile_img: "image-url",
 
               // cart: {
               //   create: {
