@@ -33,8 +33,6 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, profile }) {
       if (profile) {
-        // user.name = profile.response?.name || user.name;
-        // user.email = profile.response?.email || user.email
         user.name = profile.name || user.name;
         user.email = profile.email || user.email;
       }
@@ -47,12 +45,8 @@ export const authOptions: NextAuthOptions = {
 
         // 새로운 User 레코드를 생성하는 쿼리 작성
         if (!db_user) {
-          // const uuid : string= v4();
-
           const randomUsertIdObject = new MongoObjectID();
           const randomUsertId = randomUsertIdObject.toString();
-
-          // uuid = uuid.replace('-', '')
 
           db_user = await prisma.user.create({
             data: {
@@ -60,14 +54,6 @@ export const authOptions: NextAuthOptions = {
               name: user.name!,
               email: user.email!,
               profile_img: "",
-
-              // cart: {
-              //   create: {
-              //     profile: user.profile!,
-              //     id :  user.id!
-              //   },
-              // },
-              // role = 'user',
             },
           });
 
@@ -75,11 +61,6 @@ export const authOptions: NextAuthOptions = {
             const img = "public/basic img.jpg";
             const imgUpload = await cloudinary.uploader.upload(img);
             const imgUrl = imgUpload.secure_url;
-
-            // const basicProfileImg = require();
-            // console.log(basicProfileImg);
-            // const img = await cloudinary.uploader.upload("../../../public/basic img.jpg").then(res => console.log(res));
-            // const img = imgData.secure_url;
 
             db_user = await prisma.user.update({
               where: { email: user.email || "" },
@@ -92,8 +73,6 @@ export const authOptions: NextAuthOptions = {
 
         user.id = db_user.id;
 
-        // user.role = db_user.role;
-
         return true;
       } catch (error) {
         console.log("로그인 도중 에러가 발생했습니다.", error);
@@ -104,7 +83,6 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        // token.role = user.role
       }
 
       return token;
@@ -112,10 +90,8 @@ export const authOptions: NextAuthOptions = {
 
     async session({ session, token }) {
       if (session.user) {
-        // session.user.id = token.id as string;
         const session_user: any = session.user;
         session_user.id = token.id as string;
-        // session.user.role = token.role as string;
       }
 
       return session;
