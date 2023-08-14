@@ -11,7 +11,7 @@ import { ObjectId as MongoObjectID } from "mongodb";
 const prisma = new PrismaClient();
 
 cloudinary.config({
-  cloud_name: "musemate",
+  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
   api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
   api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET_KEY,
   secure: true,
@@ -72,14 +72,18 @@ export const authOptions: NextAuthOptions = {
           });
 
           try {
-            const basicProfileImg = require("../../../public/basic img.jpg");
-            console.log(basicProfileImg);
-            const imgData = await cloudinary.uploader.upload(basicProfileImg);
-            const imgDataUrl = imgData.secure_url;
+            const img = "public/basic img.jpg";
+            const imgUpload = await cloudinary.uploader.upload(img);
+            const imgUrl = imgUpload.secure_url;
+
+            // const basicProfileImg = require();
+            // console.log(basicProfileImg);
+            // const img = await cloudinary.uploader.upload("../../../public/basic img.jpg").then(res => console.log(res));
+            // const img = imgData.secure_url;
 
             db_user = await prisma.user.update({
               where: { email: user.email || "" },
-              data: { profile_img: imgDataUrl },
+              data: { profile_img: imgUrl },
             });
           } catch (error) {
             console.log("이미지 업로드 및 저장 에러:", error);
