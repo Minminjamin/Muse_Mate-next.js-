@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { IconType } from "react-icons";
 import styles from "../../Style/List.module.css";
 
-const List = ({ icon: Icon, menu }: { icon: IconType; menu: string }) => {
+const MenuList = ({ icon: Icon, menu }: { icon: IconType; menu: string }) => {
   return (
     <li className={styles.font}>
       <h4>
@@ -28,4 +28,4 @@ const List = ({ icon: Icon, menu }: { icon: IconType; menu: string }) => {
 //     }
 // }
 
-export default List;
+export default MenuList;

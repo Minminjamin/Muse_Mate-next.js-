@@ -3,7 +3,7 @@ import { CiStar } from "react-icons/ci";
 import { BsFillFileEarmarkPlayFill } from "react-icons/bs";
 import { PiChatCircleTextFill } from "react-icons/pi";
 import { IconType } from "react-icons";
-import List from "@/components/Atoms/SideBar/List";
+import List from "@/components/Atoms/SideBar/MemuList";
 import styles from "../../Style/List.module.css";
 
 const LibraryMenu = () => {

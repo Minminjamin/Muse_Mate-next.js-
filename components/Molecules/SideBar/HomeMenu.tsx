@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import List from "@/components/Atoms/SideBar/List";
+import List from "@/components/Atoms/SideBar/MemuList";
 import { BiSearchAlt } from "react-icons/bi";
 import { IoMdMusicalNotes, IoMdHeadset } from "react-icons/io";
 import { BsMic } from "react-icons/bs";
