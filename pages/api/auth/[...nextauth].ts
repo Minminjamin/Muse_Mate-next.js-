@@ -4,6 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@prisma/client";
 import { v4 } from "uuid";
 import { v2 as cloudinary } from "cloudinary";
+import { ObjectId as MongoObjectID } from "mongodb";
 // import v4 from "uuid"
 
 // https://cloudinary.com/documentation/node_integration#node_js_sdk_features
@@ -44,14 +45,18 @@ export const authOptions: NextAuthOptions = {
           where: { email: user.email || "" },
         });
 
-        const basicProfileImg = require("../../../public/basic img.jpg");
         // 새로운 User 레코드를 생성하는 쿼리 작성
         if (!db_user) {
-          const uuid = v4();
+          // const uuid : string= v4();
+
+          const randomUsertIdObject = new MongoObjectID();
+          const randomUsertId = randomUsertIdObject.toString();
+
+          // uuid = uuid.replace('-', '')
 
           db_user = await prisma.user.create({
             data: {
-              id: uuid,
+              id: randomUsertId,
               name: user.name!,
               email: user.email!,
               profile_img: "",
@@ -65,17 +70,24 @@ export const authOptions: NextAuthOptions = {
               // role = 'user',
             },
           });
+
+          try {
+            const basicProfileImg = require("../../../public/basic img.jpg");
+            console.log(basicProfileImg);
+            const imgData = await cloudinary.uploader.upload(basicProfileImg);
+            const imgDataUrl = imgData.secure_url;
+
+            db_user = await prisma.user.update({
+              where: { email: user.email || "" },
+              data: { profile_img: imgDataUrl },
+            });
+          } catch (error) {
+            console.log("이미지 업로드 및 저장 에러:", error);
+          }
         }
 
-        const imgData = cloudinary.uploader.upload(basicProfileImg);
-        const imgDataUrl = (await imgData).url;
-
-        db_user = await prisma.user.update({
-          where: { email: user.email || "" },
-          data: { profile_img: imgDataUrl },
-        });
-
         user.id = db_user.id;
+
         // user.role = db_user.role;
 
         return true;
