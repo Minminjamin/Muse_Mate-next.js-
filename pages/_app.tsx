@@ -4,11 +4,12 @@ import { SessionProvider } from "next-auth/react";
 import SideBar from "./SideBar/SideBar";
 // import "main.modlue.css";
 import "../styles/globals.css";
+import styles from "../styles/Main.module.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider session={pageProps.session}>
-      <div>
+      <div className={styles.container}>
         <SideBar />
         <Component {...pageProps} />
       </div>
