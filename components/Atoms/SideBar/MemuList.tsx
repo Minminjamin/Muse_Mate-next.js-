@@ -4,10 +4,11 @@ import styles from "../../Style/List.module.css";
 
 const MenuList = ({ icon: Icon, menu }: { icon: IconType; menu: string }) => {
   return (
-    <li className={styles.font}>
-      <h4>
-        <Icon /> {menu}
-      </h4>
+    <li className={styles.list}>
+      <h3 className={styles.item}>
+        <Icon />
+        {menu}
+      </h3>
     </li>
   );
 };

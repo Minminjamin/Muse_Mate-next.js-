@@ -4,7 +4,7 @@ import LibraryMenu from "@/components/Molecules/SideBar/LibraryMenu";
 import { GetServerSideProps } from "next";
 import { IconBaseProps } from "react-icons";
 // import styles from "../SideBar/Sidebar.module.css";
-import styles from "../SideBar/SideBar.module.css";
+import styles from "../../styles/SideBar.module.css";
 const SideBar = () => {
   return (
     <div className={styles.wrap}>

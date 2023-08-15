@@ -11,8 +11,8 @@ const LibraryMenu = () => {
   const libraryIcon = [CiStar, BsFillFileEarmarkPlayFill, PiChatCircleTextFill];
 
   return (
-    <ul>
-      <h2 className={styles.font}>LIBRARY</h2>
+    <ul className={styles.list}>
+      <h2>LIBRARY</h2>
       {libraryMenu.map((item, index) => (
         <List menu={item} icon={libraryIcon[index]} key={index} />
       ))}

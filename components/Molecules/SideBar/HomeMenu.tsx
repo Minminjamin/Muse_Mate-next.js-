@@ -11,8 +11,8 @@ const HomeMenu = () => {
   const homeIcon = [BiSearchAlt, IoMdMusicalNotes, IoMdHeadset, BsMic];
 
   return (
-    <ul>
-      <h2 className={styles.font}>HOME</h2>
+    <ul className={styles.list}>
+      <h2>HOME</h2>
       {homeMenu.map((item, index) => (
         <List menu={item} icon={homeIcon[index]} key={index} />
       ))}
