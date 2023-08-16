@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  color: white;
+}
+
+.wrap {
+  text-align: center;
+  padding: 10% 13% 0 13%;
+  width: 50%;
+  height: 75%;
+  border: 2px solid white;
+}
+
+.loginBtnWrap {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20%;
+  height: 40%;
+}
+
+.loginBtn {
+  height: 27%;
+  border: 2px solid white;
+  border-radius: 7.5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 3%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.kakaoLoginBtn {
+  margin-top: 7.5%;
+}
+
+.loginTitle {
+  margin-left: 3%;
+}
