@@ -11,18 +11,23 @@ const Login = () => {
 
   if (session) {
     return (
-      <>
-        <h3>환영합니다, {session.user?.name} 님 반값습니다.</h3>
-        <div onClick={() => signOut()}>
-          <h4>로그아웃</h4>
+      <div className={styles.container}>
+        <div className={styles.logoutWrap}>
+          <h3 className={styles.welcome}>
+            환영합니다, {session.user?.name}님 반값습니다.
+          </h3>
+          <div onClick={() => signOut()} className={styles.logoutBtn}>
+            <h4>로그아웃</h4>
+          </div>
         </div>
-      </>
+      </div>
     );
   }
+
   return (
     <div className={styles.container}>
       <div className={styles.wrap}>
-        <h1 className={styles.title}>Social Login</h1>
+        <h1>Social Login</h1>
         <div className={styles.loginBtnWrap}>
           <div onClick={() => signIn("google")} className={styles.loginBtn}>
             <Image src={googleIcon} alt="구글 icon" width={35} height={35} />
