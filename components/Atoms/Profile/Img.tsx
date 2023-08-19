@@ -4,8 +4,8 @@ import styles from "../../Style/Profile.module.css";
 
 // 부모 컴포넌트에서 props 받아오기
 // 일시적으로 any 선언, 추후 변경
-const Img = () => {
-  const profileImg = require("../../../public/basic img.jpg");
+const Img = ({ user }: { user: any }) => {
+  const profileImg = user.profile_img;
 
   return (
     <div>
