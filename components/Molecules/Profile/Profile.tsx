@@ -33,9 +33,9 @@ const Profile = () => {
   // }, [user]);
   return (
     <div className={styles.wrap}>
-      <Img />
+      <Img user={user} />
       <div className={styles.name}>
-        <Name />
+        <Name user={user} />
       </div>
     </div>
   );
