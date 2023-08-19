@@ -16,4 +16,7 @@
 
 .name {
   margin-left: 5%;
+  white-space: nowrap;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
 }
