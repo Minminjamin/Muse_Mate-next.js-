@@ -10,3 +10,7 @@
   margin-right: 10px;
   /* border-bottom: 1px solid #ccc; */
 }
+
+.homeListTitle {
+  cursor: pointer;
+}

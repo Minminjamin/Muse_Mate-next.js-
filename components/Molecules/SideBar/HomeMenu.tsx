@@ -19,7 +19,9 @@ const HomeMenu = () => {
 
   return (
     <ul className={styles.list}>
-      <h2 onClick={onHandleHome}>HOME</h2>
+      <h2 onClick={onHandleHome} className={styles.homeListTitle}>
+        HOME
+      </h2>
       {homeMenu.map((item, index) => (
         <List menu={item} icon={homeIcon[index]} key={index} />
       ))}
