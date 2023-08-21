@@ -20,3 +20,17 @@
   /* overflow: hidden;
   text-overflow: ellipsis; */
 }
+
+.plsLogin {
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+}
+
+.login {
+  margin-left: 5%;
+}
