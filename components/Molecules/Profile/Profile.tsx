@@ -6,10 +6,13 @@ import { useEffect, useState } from "react";
 import { getSession, useSession } from "next-auth/react";
 import { useSelector } from "react-redux";
 import { FiLogIn } from "react-icons/fi";
+import { useRouter } from "next/router";
 
 // const prisma = new PrismaClient();
 // https://velog.io/@bellecode20/%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EB%90%90%EB%8A%94%EC%A7%80-Session%EC%9C%BC%EB%A1%9C-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0-Session%EC%97%90%EC%84%9C-%EC%A0%95%EB%B3%B4-%EA%BA%BC%EB%82%B4%EC%98%A4%EA%B8%B0-vdfy2p20
 const Profile = () => {
+  const router = useRouter();
+
   const [user, setUser] = useState([]);
 
   const { data: session } = useSession();
@@ -34,6 +37,10 @@ const Profile = () => {
     fetchData();
   }, []);
 
+  const onHandleLogin = () => {
+    router.push("/Login/Login");
+  };
+
   return (
     <div className={styles.wrap}>
       {session ? (
@@ -45,7 +52,7 @@ const Profile = () => {
         </>
       ) : (
         <>
-          <h3 className={styles.plsLogin}>
+          <h3 className={styles.plsLogin} onClick={onHandleLogin}>
             <FiLogIn />
             <div className={styles.name}>
               <h3>로그인</h3>
