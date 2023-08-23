@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 
 // 페이지 접근차단 미들웨어
 // 유저 정보 받아오기
-// {userId}/EditorProfile
-const EditorProfile = () => {
+// {userId}/MyProfile
+const MyProfile = () => {
   const [user, setUser] = useState([]);
 
   const [name, setName] = useState();
@@ -44,6 +44,7 @@ const EditorProfile = () => {
       <h3>{id}</h3>
       {/* {id}
       {name} */}
+      <button>수정하기</button>
       <form></form>
     </div>
   );
@@ -65,4 +66,4 @@ const EditorProfile = () => {
 //   };
 // };
 
-export default EditorProfile;
+export default MyProfile;
