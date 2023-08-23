@@ -32,7 +32,29 @@ const ProfileEditor = () => {
     fetchData();
   }, []);
 
-  const onHandleUpdate = () => {};
+  const onHandleUpdate = async () => {
+    try {
+      const res = await fetch("api/UpdateProfile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+          name,
+          profileImg,
+        }),
+      });
+
+      if (res.ok) {
+        console.log("프로필 정보 업데이트 성공");
+      } else {
+        console.log("프로필 정보 업데이트 실패");
+      }
+    } catch (error) {
+      console.log("네트워크 에러 :", error);
+    }
+  };
   return (
     <div>
       <form>
