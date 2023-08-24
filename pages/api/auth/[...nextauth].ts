@@ -45,16 +45,38 @@ export const authOptions: NextAuthOptions = {
 
         // 새로운 User 레코드를 생성하는 쿼리 작성
         if (!db_user) {
+          const userRandomId = () => {
+            const random_1: string = Math.random()
+              .toString(36)
+              .substring(2, 10);
+            const randomId_1 = random_1.replace(/[0-9]/g, "");
+
+            const random_2: string = Math.random().toString(36).substring(2, 6);
+
+            const isUnderbar: number = Math.floor(Math.random() * 10) + 1;
+
+            let randomId: string = "";
+
+            if (isUnderbar % 2 == 0) {
+              randomId = randomId_1 + random_2;
+            } else if (isUnderbar % 2 == 1) {
+              randomId = randomId_1 + "_" + random_2;
+            }
+
+            return randomId;
+          };
+
           const randomIdObject = new MongoObjectID();
           const randomId = randomIdObject.toString();
 
+          const userId = userRandomId();
           db_user = await prisma.user.create({
             data: {
               id: randomId,
               name: user.name!,
               email: user.email!,
               profile_img: "",
-              user_id: "",
+              user_id: userId,
             },
           });
 
