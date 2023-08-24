@@ -15,7 +15,8 @@ model User {
   email String   @unique(map: "email_U")
   name  String
   profile_img String
-  posts String[] @db.ObjectId
+  user_id String
+  // posts String[] @db.ObjectId
     // postIds String[] @db.ObjectId @map("posts")
     // @@index([posts], map: "posts_R")
     // @@map("users")
