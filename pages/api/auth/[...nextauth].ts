@@ -45,12 +45,12 @@ export const authOptions: NextAuthOptions = {
 
         // 새로운 User 레코드를 생성하는 쿼리 작성
         if (!db_user) {
-          const randomUsertIdObject = new MongoObjectID();
-          const randomUsertId = randomUsertIdObject.toString();
+          const randomIdObject = new MongoObjectID();
+          const randomId = randomIdObject.toString();
 
           db_user = await prisma.user.create({
             data: {
-              id: randomUsertId,
+              id: randomId,
               name: user.name!,
               email: user.email!,
               profile_img: "",
