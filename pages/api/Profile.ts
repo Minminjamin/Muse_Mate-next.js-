@@ -26,6 +26,7 @@ export default async function handler(
         name: true,
         email: true,
         profile_img: true,
+        user_id: true,
       },
     });
 
