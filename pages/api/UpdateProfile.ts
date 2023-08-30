@@ -10,24 +10,14 @@ export default async function handler(
 ) {
   const { user_id, name, id } = req.body;
 
-  // const session = await getSession({ req });
-
-  // if (!session?.user) {
-  //   return res.status(401).json({ message: "Unauthorized" });
-  // }
-
   try {
-    // const userEmail: string | null = session?.user.email || "";
-
     const user = await prisma.user.update({
       where: {
         id: id,
-        // email: userEmail,
       },
       data: {
         user_id: user_id,
         name: name,
-        // profile_img: profileImg,
       },
     });
 
