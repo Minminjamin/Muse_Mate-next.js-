@@ -8,20 +8,21 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { user_id, name } = req.body;
+  const { user_id, name, id } = req.body;
 
-  const session = await getSession({ req });
+  // const session = await getSession({ req });
 
-  if (!session?.user) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
+  // if (!session?.user) {
+  //   return res.status(401).json({ message: "Unauthorized" });
+  // }
 
   try {
-    const userEmail: string | null = session?.user.email || "";
+    // const userEmail: string | null = session?.user.email || "";
 
     const user = await prisma.user.update({
       where: {
-        email: userEmail,
+        id: id,
+        // email: userEmail,
       },
       data: {
         user_id: user_id,

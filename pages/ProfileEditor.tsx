@@ -2,8 +2,8 @@ import Img from "@/components/Atoms/Profile/Img";
 import { use, useEffect, useState } from "react";
 
 const ProfileEditor = () => {
-  const [user, setUser] = useState([]);
-
+  const [user, setUser] = useState();
+  const [userObjectId, setUserObjectId] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
   // const [profileImg, setProfileImg] = useState();
@@ -15,6 +15,7 @@ const ProfileEditor = () => {
         const data = await res.json();
 
         if (res.ok) {
+          setUserObjectId(data.id);
           setUser(data);
           setName(data.name);
           setUserId(data.user_id);
@@ -38,6 +39,7 @@ const ProfileEditor = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          id: userObjectId,
           user_id: userId,
           name: name,
           // profile_img: profileImg,
