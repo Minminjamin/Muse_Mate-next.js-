@@ -40,11 +40,12 @@ const ProfileImgTest = () => {
   useEffect(() => {
     console.log(file);
   }, [file]);
+
   const onHandleUpdate = async () => {
     try {
       if (file) {
         const formData = new FormData();
-        formData.append("img", file);
+        formData.append("file", file);
         const res = await fetch("api/UpdateProfileImg", {
           method: "POST",
           body: formData,
