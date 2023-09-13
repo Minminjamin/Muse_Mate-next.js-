@@ -6,7 +6,8 @@ const ProfileEditor = () => {
   const [userObjectId, setUserObjectId] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
-  // const [profileImg, setProfileImg] = useState();
+  const [profileImg, setProfileImg] = useState();
+  const [file, setFile] = useState<File | null>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +20,7 @@ const ProfileEditor = () => {
           setUser(data);
           setName(data.name);
           setUserId(data.user_id);
-          // setProfileImg(data.profileImg);
+          setProfileImg(data.profile_img);
         } else {
           console.log("Api 오류 :", data);
         }
@@ -33,6 +34,11 @@ const ProfileEditor = () => {
 
   const onHandleUpdate = async () => {
     try {
+      const formData = new FormData();
+
+      if (file) {
+        formData.append("file", file);
+      }
       const res = await fetch("api/UpdateProfile", {
         method: "POST",
         headers: {
@@ -42,7 +48,8 @@ const ProfileEditor = () => {
           id: userObjectId,
           user_id: userId,
           name: name,
-          // profile_img: profileImg,
+          profile_img: profileImg,
+          formData: formData,
         }),
       });
 
@@ -55,11 +62,19 @@ const ProfileEditor = () => {
       console.log("네트워크 에러:", error);
     }
   };
+  const onHandleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // const imgFile = ;
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+      // console.log(file);
+    }
+  };
 
   return (
     <div>
       <form>
-        {/* <Img user={user} /> */}
+        <Img user={user} />
+        <input type="file" onChange={onHandleChangeImg}></input>
         <input
           value={name}
           onChange={(e) => {
