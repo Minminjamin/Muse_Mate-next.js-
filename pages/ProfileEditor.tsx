@@ -8,6 +8,7 @@ const ProfileEditor = () => {
   const [userId, setUserId] = useState<string>("");
   const [profileImg, setProfileImg] = useState();
   const [file, setFile] = useState<File | null>();
+  const [newProfileImgUrl, setNewProfileImgUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,31 +33,58 @@ const ProfileEditor = () => {
     fetchData();
   }, []);
 
-  const onHandleUpdate = async () => {
+  const onHandleUpdate = async (e: { preventDefault: () => void }) => {
+    // e.preventDefault();
     try {
       const formData = new FormData();
-
+      let res;
       if (file) {
         formData.append("file", file);
-      }
-      const res = await fetch("api/UpdateProfile", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: userObjectId,
-          user_id: userId,
-          name: name,
-          profile_img: profileImg,
-          formData: formData,
-        }),
-      });
 
-      if (res.ok) {
-        console.log("프로필 정보 업데이트 성공");
+        // 이미지 업로드와 프로필 정보 업데이트를 동시에 실행
+        const [resImg, resProfile] = await Promise.all([
+          fetch("api/UpdateProfileImg", {
+            method: "POST",
+            body: formData,
+          }),
+          fetch("api/UpdateProfile", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: userObjectId,
+              user_id: userId,
+              name: name,
+              profile_img: profileImg,
+            }),
+          }),
+        ]);
+
+        if (resImg.ok && resProfile.ok) {
+          console.log("프로필 정보 업데이트 성공");
+        } else {
+          console.log("프로필 정보 업데이트 실패");
+        }
       } else {
-        console.log("프로필 정보 업데이트 실패");
+        res = await fetch("api/UpdateProfile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: userObjectId,
+            user_id: userId,
+            name: name,
+            // profile_img: profileImg,
+            // new_profile_img_url: newProfileImgUrl,
+          }),
+        });
+        if (res.ok) {
+          console.log("프로필 정보 업데이트 성공");
+        } else {
+          console.log("프로필 정보 업데이트 실패");
+        }
       }
     } catch (error) {
       console.log("네트워크 에러:", error);
