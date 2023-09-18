@@ -1,12 +1,12 @@
-import Name from "@/components/Atoms/Playlist/Name";
-import SmallScreenPlaylist from "@/components/Atoms/Playlist/SmallScreenPlaylist";
+import Name from "@/components/Atoms/Name";
+import SmallScreenPlaylist from "@/components/Atoms/SmallScreenPlaylist";
 import { GetServerSideProps } from "next";
 
 const SmallPlaylist = () => {
   return (
     <div>
       <SmallScreenPlaylist />
-      <Name />
+      <Name user={undefined} />
     </div>
   );
 };

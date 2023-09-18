@@ -1,4 +1,4 @@
-import Img from "@/components/Atoms/Profile/Img";
+import Img from "@/components/Atoms/Img";
 import { use, useEffect, useState } from "react";
 import styles from "../styles/ProfileEditor.module.css";
 

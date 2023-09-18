@@ -1,4 +1,4 @@
-import Img from "@/components/Atoms/Profile/Img";
+import Img from "@/components/Atoms/Img";
 import Name from "@/components/Atoms/Profile/Name";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getSession } from "next-auth/react";

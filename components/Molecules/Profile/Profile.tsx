@@ -1,5 +1,5 @@
 import { GetServerSideProps, GetStaticProps } from "next";
-import Img from "@/components/Atoms/Profile/Img";
+import Img from "@/components/Atoms/Img";
 import Name from "@/components/Atoms/Profile/Name";
 import styles from "../../Style/Profile.module.css";
 import { useEffect, useState } from "react";

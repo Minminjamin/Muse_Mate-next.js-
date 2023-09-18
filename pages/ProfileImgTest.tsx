@@ -1,4 +1,4 @@
-import Img from "@/components/Atoms/Profile/Img";
+import Img from "@/components/Atoms/Img";
 import { off } from "process";
 import React, { use, useEffect, useState } from "react";
 
