@@ -1,0 +1,43 @@
+.wrap h1 {
+  color: white;
+}
+
+.wrapCont {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  display: flex;
+  align-items: flex-end;
+}
+
+.img input {
+  border-radius: 0px;
+}
+.wrapCont label {
+  color: white;
+}
+
+.wrapCont .inputText {
+  border-radius: 20px;
+  height: 30px;
+  /* height: 20px; */
+  border: solid 1px #fff;
+}
+
+.wrapBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.btn {
+  border-radius: 15px;
+  background: #fff;
+  /* color: #fff; */
+  height: 30px;
+  width: 40%;
+  display: inline;
+  font-weight: bold;
+  /* text-align: right; */
+}

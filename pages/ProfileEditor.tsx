@@ -1,5 +1,6 @@
 import Img from "@/components/Atoms/Profile/Img";
 import { use, useEffect, useState } from "react";
+import styles from "../styles/ProfileEditor.module.css";
 
 const ProfileEditor = () => {
   const [user, setUser] = useState();
@@ -99,22 +100,36 @@ const ProfileEditor = () => {
   };
 
   return (
-    <div>
-      <form>
-        <Img user={user} />
-        <input type="file" onChange={onHandleChangeImg}></input>
-        <input
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
+    <div className={styles.wrap}>
+      <h1>Modify Profile</h1>
+      <form className={styles.wrapCont}>
+        <div className={styles.img}>
+          <Img user={user} />
+          <input type="file" onChange={onHandleChangeImg}></input>
+        </div>
+
+        <label>
+          <h3>Id</h3>
+        </label>
         <input
           value={userId}
+          className={styles.inputText}
           onChange={(e) => {
             setUserId(e.target.value);
           }}
         />
+
+        <label>
+          <h3>Name</h3>
+        </label>
+        <input
+          value={name}
+          className={styles.inputText}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+
         {/* <Img user={user} />
         <input
           value={name}
@@ -128,7 +143,11 @@ const ProfileEditor = () => {
             setUserId(e.target.value);
           }}
         /> */}
-        <button onClick={onHandleUpdate}>저장하기</button>
+        <div className={styles.wrapBtn}>
+          <button onClick={onHandleUpdate} className={styles.btn}>
+            SAVE
+          </button>
+        </div>
       </form>
     </div>
   );
