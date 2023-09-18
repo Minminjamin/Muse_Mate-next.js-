@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetStaticProps } from "next";
 import Img from "@/components/Atoms/Img";
-import Name from "@/components/Atoms/Profile/Name";
+import Name from "@/components/Atoms/Name";
 import styles from "../../Style/Profile.module.css";
 import { useEffect, useState } from "react";
 import { getSession, useSession } from "next-auth/react";
