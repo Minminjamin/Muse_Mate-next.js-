@@ -6,7 +6,7 @@ const Name = ({ user }: { user: any }) => {
   // const name: string = "jamin";
 
   // const { user } = props;
-  return <h3 className={styles.name}>{user.name}\</h3>;
+  return <h3 className={styles.name}>{user.name}</h3>;
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
