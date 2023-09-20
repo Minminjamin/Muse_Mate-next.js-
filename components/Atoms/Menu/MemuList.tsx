@@ -5,10 +5,10 @@ import styles from "../Menu/List.module.css";
 const MenuList = ({ icon: Icon, menu }: { icon: IconType; menu: string }) => {
   return (
     <li className={styles.list}>
-      <h3 className={styles.item}>
+      <h4 className={styles.item}>
         <Icon />
         {menu}
-      </h3>
+      </h4>
     </li>
   );
 };
