@@ -7,15 +7,13 @@ const Img = ({ user }: { user: any }) => {
   const profileImg = user?.profile_img;
 
   return (
-    <div>
-      <Image
-        src={profileImg}
-        alt="user profile"
-        width={54}
-        height={54}
-        className={styles.img}
-      />
-    </div>
+    <Image
+      src={profileImg}
+      alt="user profile"
+      width={54}
+      height={54}
+      className={styles.img}
+    />
   );
 };
 
