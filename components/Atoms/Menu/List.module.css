@@ -1,6 +1,7 @@
 .wrap {
   color: white;
   padding: 0;
+  cursor: pointer;
 }
 
 .wrap h4 {
@@ -12,6 +13,7 @@
   flex-shrink: 0;
 }
 
-/* .wrap h4 > * {
-  margin-right: 10px;
-} */
+.wrap:hover h4 {
+  scale: 1.1;
+  border: solid 1px #fff;
+}
