@@ -45,7 +45,7 @@ const Profile = () => {
     <div className={styles.wrap}>
       {session ? (
         <>
-          <Img user={user} />
+          <Img user={user} heightSize={54} widthSize={54} />
           <div className={styles.name}>
             <Name user={user} />
           </div>
