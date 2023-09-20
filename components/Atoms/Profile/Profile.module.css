@@ -1,36 +1,7 @@
 .img {
-  /* width: 15%;
-  height: 15%; */
   border-radius: 50%;
 }
 
 .name {
   color: white;
-}
-
-.wrap {
-  display: flex;
-  align-items: center;
-  /* justify-content: flex-start; */
-}
-
-.name {
-  margin-left: 5%;
-  white-space: nowrap;
-  /* overflow: hidden;
-  text-overflow: ellipsis; */
-}
-
-.plsLogin {
-  color: white;
-  cursor: pointer;
-  display: flex;
-  flex-wrap: nowrap;
-  align-content: flex-start;
-  flex-direction: row;
-  align-items: center;
-}
-
-.login {
-  margin-left: 5%;
 }
