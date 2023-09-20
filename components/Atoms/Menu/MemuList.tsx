@@ -4,9 +4,9 @@ import styles from "../Menu/List.module.css";
 
 const MenuList = ({ icon: Icon, menu }: { icon: IconType; menu: string }) => {
   return (
-    <li className={styles.list}>
-      <h4 className={styles.item}>
-        <Icon />
+    <li className={styles.wrap}>
+      <h4>
+        <Icon className={styles.icon} />
         {menu}
       </h4>
     </li>
