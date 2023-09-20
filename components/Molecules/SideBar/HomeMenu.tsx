@@ -4,7 +4,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { IoMdMusicalNotes, IoMdHeadset } from "react-icons/io";
 import { BsMic } from "react-icons/bs";
 import { IconType } from "react-icons";
-import styles from "../../Style/List.module.css";
+import styles from "../SideBar/List.module.css";
 import { useRouter } from "next/router";
 
 const HomeMenu = () => {

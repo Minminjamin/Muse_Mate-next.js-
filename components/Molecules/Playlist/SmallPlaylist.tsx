@@ -1,5 +1,5 @@
-import Name from "@/components/Atoms/Name";
-import SmallScreenPlaylist from "@/components/Atoms/SmallScreenPlaylist";
+import Name from "../../Atoms/Profile/Name";
+import SmallScreenPlaylist from "@/components/Atoms/Playlist/SmallScreenPlaylist";
 import { GetServerSideProps } from "next";
 
 const SmallPlaylist = () => {
