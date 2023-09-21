@@ -81,7 +81,7 @@ export const authOptions: NextAuthOptions = {
           });
 
           try {
-            const img = "public/basic img.jpg";
+            const img = "public/user-2935527_1280.png";
             const imgUpload = await cloudinary.uploader.upload(img);
             const imgUrl = imgUpload.secure_url;
 
