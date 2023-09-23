@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetStaticProps } from "next";
 import Img from "@/components/Atoms/Profile/Img";
 import Name from "@/components/Atoms/Profile/Name";
-import styles from "../Profile/Profile.module.css";
+import styles from "../ProfileLogin/ProfileOrLoginRouting.module.css";
 import { useEffect, useState } from "react";
 import { getSession, useSession } from "next-auth/react";
 import { useSelector } from "react-redux";
