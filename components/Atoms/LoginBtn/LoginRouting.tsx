@@ -1,6 +1,6 @@
 import React from "react";
 import { FiLogIn } from "react-icons/fi";
-import styles from "../Login/Login.module.css";
+import styles from "../LoginBtn/LoginRouting.module.css";
 import { useRouter } from "next/router";
 
 const LoginRouting = () => {
