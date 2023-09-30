@@ -104,7 +104,7 @@ const ProfileEditor = () => {
       <h1>Modify Profile</h1>
       <form className={styles.wrapCont}>
         <div className={styles.img}>
-          <Img user={user} />
+          <Img user={user} widthSize={54} heightSize={54} />
           <input type="file" onChange={onHandleChangeImg}></input>
         </div>
 
