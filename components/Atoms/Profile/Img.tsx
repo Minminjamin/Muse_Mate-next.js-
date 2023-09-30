@@ -18,8 +18,8 @@ const Img = ({
     <Image
       src={profileImg}
       alt="user profile"
-      width={widthSize}
-      height={heightSize}
+      width={widthSize | 54}
+      height={heightSize | 54}
       className={styles.img}
     />
   );
