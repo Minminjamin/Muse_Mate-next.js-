@@ -9,38 +9,40 @@ import { FiLogIn } from "react-icons/fi";
 import { useRouter } from "next/router";
 import LoginRouting from "@/components/Atoms/LoginBtn/LoginRouting";
 import Profile from "@/components/Molecules/Profile/Profile";
+import useUserData from "@/hooks/useUserData";
 
 // const prisma = new PrismaClient();
 // https://velog.io/@bellecode20/%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EB%90%90%EB%8A%94%EC%A7%80-Session%EC%9C%BC%EB%A1%9C-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0-Session%EC%97%90%EC%84%9C-%EC%A0%95%EB%B3%B4-%EA%BA%BC%EB%82%B4%EC%98%A4%EA%B8%B0-vdfy2p20
-const ProfileOrLoginRouting = (user) => {
-  // const [user, setUser] = useState([]);
+const ProfileOrLoginRouting = () => {
+  const [user, setUser] = useState();
 
   // const { data: session } = useSession();
   // const session = await getSession();
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch("/api/Profile");
-  //       const data = await res.json();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/Profile");
+        const data = await res.json();
 
-  //       if (res.ok) {
-  //         setUser(data);
-  //         // console.log(user);
-  //       } else {
-  //         console.log("Api 오류 : ", data);
-  //       }
-  //     } catch (error) {
-  //       console.log("네트워크 에러", error);
-  //     }
-  //   };
+        if (res.ok) {
+          setUser(data);
+          console.log(user);
+          // console.log(user);
+        } else {
+          console.log("Api 오류 : ", data);
+        }
+      } catch (error) {
+        console.log("네트워크 에러", error);
+      }
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
   return (
     <div className={styles.wrap}>
       {user ? (
-        <Profile />
+        <Profile user={user} />
       ) : (
         // <>
         //   <Img user={user} heightSize={54} widthSize={54} />
