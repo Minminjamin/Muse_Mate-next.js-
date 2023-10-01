@@ -21,3 +21,11 @@ model User {
     // @@index([posts], map: "posts_R")
     // @@map("users")
 }
+
+model Follow {
+  id String @id @map("_id")
+  user_id    String
+  follow_id  String
+  following_id String
+  @@unique([user_id, follow_id]) // user_id와 follow_id의 조합이 고유해야 함
+}
