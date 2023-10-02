@@ -8,11 +8,11 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { userId } = req.body;
+    const { searchUserId } = req.body;
 
     const user = await prisma.user.findMany({
       where: {
-        user_id: userId,
+        user_id: searchUserId,
       },
     });
 
