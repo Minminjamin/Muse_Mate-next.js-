@@ -18,6 +18,7 @@ const FollowUser = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectUser, setSelectUser] = useState<User | null>(null);
   const [userId, setUserId] = useState<string>("");
+  const [isFollow, setIsFollow] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +39,31 @@ const FollowUser = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("api/IsFollow", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: userId,
+            followId: selectUser?.id,
+          }),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          setIsFollow(data.isFollow);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
   const onUserSearch = async () => {
     try {
       const res = await fetch("api/SearchUser", {
@@ -112,7 +138,12 @@ const FollowUser = () => {
           <h2>프로필</h2>
           <span>{selectUser.id}</span>
           <span>{selectUser.name}</span>
-          <button onClick={onHandleClickFollow}>Follow</button>
+          {isFollow ? (
+            <button onClick={onHandleClickFollow}>Follow</button>
+          ) : (
+            <button>UnFollow</button>
+          )}
+
           <button>Chat</button>
         </>
       )}
