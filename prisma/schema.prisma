@@ -23,7 +23,7 @@ model User {
 }
 
 model Follow {
-  id String @id @map("_id")
+  id String @id @map("_id") @default(auto()) @db.ObjectId
   user_id    String
   follow_id  String
   following_id String
