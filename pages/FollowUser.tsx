@@ -110,6 +110,27 @@ const FollowUser = () => {
     }
   };
 
+  const onHandleClickUnFollow = async () => {
+    try {
+      const res = await fetch("api/UnFollow", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userId,
+          followId: input,
+        }),
+      });
+
+      if (res.ok) {
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <PageName pageName={"SearchUser"} />
@@ -141,7 +162,7 @@ const FollowUser = () => {
           {isFollow ? (
             <button onClick={onHandleClickFollow}>Follow</button>
           ) : (
-            <button>UnFollow</button>
+            <button onClick={onHandleClickUnFollow}>UnFollow</button>
           )}
 
           <button>Chat</button>
