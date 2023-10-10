@@ -25,14 +25,4 @@ const Img = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  // const userId = context.query.userId;
-  // const profileImg = 0;
-  return {
-    props: {
-      //   profileImg,
-    },
-  };
-};
-
 export default Img;

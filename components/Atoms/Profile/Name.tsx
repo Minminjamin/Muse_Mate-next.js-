@@ -9,10 +9,4 @@ const Name = ({ user }: { user: any }) => {
   return <h3 className={styles.name}>{user.name}</h3>;
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return {
-    props: {},
-  };
-};
-
 export default Name;

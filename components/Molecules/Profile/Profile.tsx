@@ -21,21 +21,4 @@ const Profile = ({ user }: { user: any }) => {
   );
 };
 
-// export const getStaticProps: GetStaticProps = async (ctx) => {
-//   const res = await fetch("/api/Profile");
-//   const user = await res.json();
-//   return {
-//     props: { user },
-//   };
-// };
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  // const session = await getSession(ctx);
-  // const isLogin = session?.user;
-
-  return {
-    props: {},
-  };
-};
-
 export default Profile;

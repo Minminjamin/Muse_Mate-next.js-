@@ -10,10 +10,4 @@ const SmallScreenPlaylist = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return {
-    props: {},
-  };
-};
-
 export default SmallScreenPlaylist;

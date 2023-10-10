@@ -13,20 +13,4 @@ const MenuList = ({ icon: Icon, menu }: { icon: IconType; menu: string }) => {
   );
 };
 
-// export const getStaticPaths: GetStaticPaths = () => {
-
-//     return {
-//         paths:[],
-//         fallback:false
-//     t}
-// }
-// export const getStaticProps: GeStaticProps = async ({ listmenu }) => {
-//     const menu = listmenu
-//     return {
-//         props: {
-//             menu
-//         }
-//     }
-// }
-
 export default MenuList;
