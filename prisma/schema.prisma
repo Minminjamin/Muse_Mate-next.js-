@@ -29,3 +29,19 @@ model Follow {
   following_id String
   @@unique([user_id, follow_id]) // user_id와 follow_id의 조합이 고유해야 함
 }
+
+model Chat {
+  id  String   @id @map("_id") @default(auto()) @db.ObjectId
+  sender_user_id  String
+  receiver_user_id String
+  created_at  DateTime @default(now())
+  message String
+  room  Room  @relation(fields: [room_id], references: [id])
+  room_id String @db.ObjectId
+}
+
+model Room {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  member_ids  String[]
+  chats Chat[]
+}
