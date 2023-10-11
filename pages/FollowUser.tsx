@@ -1,5 +1,7 @@
 import Search from "@/components/Atoms/Search/Search";
 import PageName from "@/components/Atoms/Title/PageName";
+import { useUserData } from "@/hooks/useUserData";
+
 import React, {
   ReactComponentElement,
   ReactElement,
@@ -20,24 +22,11 @@ const FollowUser = () => {
   const [userId, setUserId] = useState<string>("");
   const [isFollow, setIsFollow] = useState<boolean>(false);
 
+  const { isLoading, isError, error, data } = useUserData();
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/Profile");
-        const data = await res.json();
-
-        if (res.ok) {
-          setUserId(data.user_id);
-        } else {
-          console.log("Api 오류 :", data);
-        }
-      } catch (error) {
-        console.log("네트워크 에러 :", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+    setUserId(data?.user_id);
+  }, [data]);
 
   useEffect(() => {
     const fetchData = async () => {

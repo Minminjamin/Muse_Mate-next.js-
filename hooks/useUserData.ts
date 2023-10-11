@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 
-const useUserData = async () => {
-  const res = await fetch("/api/profile");
+const fetchData = async () => {
+  const res = await fetch("/api/Profile");
+
   return res.json();
 };
 
-export default useUserData;
+export const useUserData = () => {
+  return useQuery("user", fetchData);
+};

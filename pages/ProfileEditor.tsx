@@ -1,4 +1,5 @@
 import Img from "@/components/Atoms/Profile/Img";
+import { useUserData } from "@/hooks/useUserData";
 import { use, useEffect, useState } from "react";
 import styles from "../styles/ProfileEditor.module.css";
 
@@ -11,28 +12,38 @@ const ProfileEditor = () => {
   const [file, setFile] = useState<File | null>();
   const [newProfileImgUrl, setNewProfileImgUrl] = useState<string | null>(null);
 
+  const { isLoading, isError, error, data } = useUserData();
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/Profile");
-        const data = await res.json();
+    setUserId(data?.user_id);
+    setUserObjectId(data?.id);
+    setUser(data);
+    setName(data?.name);
+    setProfileImg(data?.profile_img);
+  }, [data]);
 
-        if (res.ok) {
-          setUserObjectId(data.id);
-          setUser(data);
-          setName(data.name);
-          setUserId(data.user_id);
-          setProfileImg(data.profile_img);
-        } else {
-          console.log("Api 오류 :", data);
-        }
-      } catch (error) {
-        console.log("네트워크 에러 :", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch("/api/Profile");
+  //       const data = await res.json();
 
-    fetchData();
-  }, []);
+  //       if (res.ok) {
+  //         setUserObjectId(data.id);
+  //         setUser(data);
+  //         setName(data.name);
+  //         setUserId(data.user_id);
+  //         setProfileImg(data.profile_img);
+  //       } else {
+  //         console.log("Api 오류 :", data);
+  //       }
+  //     } catch (error) {
+  //       console.log("네트워크 에러 :", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   const onHandleUpdate = async (e: { preventDefault: () => void }) => {
     // e.preventDefault();

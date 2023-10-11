@@ -1,5 +1,6 @@
 import Img from "@/components/Atoms/Profile/Img";
 import Name from "@/components/Atoms/Profile/Name";
+import { useUserData } from "@/hooks/useUserData";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -10,33 +11,13 @@ import { useEffect, useState } from "react";
 const MyProfile = () => {
   const [user, setUser] = useState([]);
 
-  const [name, setName] = useState();
-  const [id, setId] = useState();
-  // const [profileImg, setProfileImg] = useState();
+  const { isLoading, isError, error, data } = useUserData();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/Profile");
-        const data = await res.json();
+    setUser(data);
+  }, [data]);
+  // const [profileImg, setProfileImg] = useState();
 
-        if (res.ok) {
-          setUser(data);
-          setName(data.name);
-          setId(data.id);
-          // setProfileImg(data.profileImg);
-          // setUser(data);
-          // console.log(user);
-        } else {
-          console.log("Api 오류 : ", data);
-        }
-      } catch (error) {
-        console.log("네트워크 에러", error);
-      }
-    };
-
-    fetchData();
-  }, []);
   return (
     <div>
       <Img user={user} />
