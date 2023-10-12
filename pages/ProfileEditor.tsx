@@ -22,38 +22,13 @@ const ProfileEditor = () => {
     setProfileImg(data?.profile_img);
   }, [data]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch("/api/Profile");
-  //       const data = await res.json();
-
-  //       if (res.ok) {
-  //         setUserObjectId(data.id);
-  //         setUser(data);
-  //         setName(data.name);
-  //         setUserId(data.user_id);
-  //         setProfileImg(data.profile_img);
-  //       } else {
-  //         console.log("Api 오류 :", data);
-  //       }
-  //     } catch (error) {
-  //       console.log("네트워크 에러 :", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   const onHandleUpdate = async (e: { preventDefault: () => void }) => {
-    // e.preventDefault();
     try {
       const formData = new FormData();
       let res;
       if (file) {
         formData.append("file", file);
 
-        // 이미지 업로드와 프로필 정보 업데이트를 동시에 실행
         const [resImg, resProfile] = await Promise.all([
           fetch("api/UpdateProfileImg", {
             method: "POST",
@@ -88,8 +63,6 @@ const ProfileEditor = () => {
             id: userObjectId,
             user_id: userId,
             name: name,
-            // profile_img: profileImg,
-            // new_profile_img_url: newProfileImgUrl,
           }),
         });
         if (res.ok) {
@@ -103,10 +76,8 @@ const ProfileEditor = () => {
     }
   };
   const onHandleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const imgFile = ;
     if (e.target.files) {
       setFile(e.target.files[0]);
-      // console.log(file);
     }
   };
 
@@ -141,19 +112,6 @@ const ProfileEditor = () => {
           }}
         />
 
-        {/* <Img user={user} />
-        <input
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <input
-          value={userId}
-          onChange={(e) => {
-            setUserId(e.target.value);
-          }}
-        /> */}
         <div className={styles.wrapBtn}>
           <button onClick={onHandleUpdate} className={styles.btn}>
             SAVE

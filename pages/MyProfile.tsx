@@ -16,7 +16,6 @@ const MyProfile = () => {
   useEffect(() => {
     setUser(data);
   }, [data]);
-  // const [profileImg, setProfileImg] = useState();
 
   return (
     <div>
@@ -30,21 +29,5 @@ const MyProfile = () => {
     </div>
   );
 };
-
-// export const getStaticPaths: GetStaticPaths = () => {
-//   return {
-//     paths: [],
-//     fallback: false,
-//   };
-// };
-// export const getStaticProps: GetStaticProps = async (ctx) => {
-//   const session = getSession();
-
-//   const res = await fetch("/api/Profile");
-//   const userData = await res.json();
-//   return {
-//     props: { userData },
-//   };
-// };
 
 export default MyProfile;
