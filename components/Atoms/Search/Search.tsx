@@ -1,16 +1,12 @@
 import React from "react";
 
-const Search = ({
-  value,
-  onHandleChange,
-  search,
-  placeholder,
-}: {
-  value: any;
-  onHandleChange: any;
-  search: any;
-  placeholder: any;
-}) => {
+interface Search {
+  value: string;
+  onHandleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  search: () => void;
+  placeholder: string;
+}
+const Search = ({ value, onHandleChange, search, placeholder }: Search) => {
   return (
     <>
       <input

@@ -123,14 +123,16 @@ const FollowUser = () => {
   return (
     <div>
       <PageName pageName={"SearchUser"} />
-      <Search
-        value={input}
-        onHandleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setInput(e.target.value)
-        }
-        search={onUserSearch}
-        placeholder={"검색할 사용자의 id(아이디)를 입력해주세요."}
-      />
+      {input && (
+        <Search
+          value={input}
+          onHandleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setInput(e.target.value)
+          }
+          search={onUserSearch}
+          placeholder="검색할 사용자의 id(아이디)를 입력해주세요."
+        />
+      )}
 
       <div>
         <h2>검색 결과</h2>
