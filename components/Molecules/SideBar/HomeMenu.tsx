@@ -11,7 +11,12 @@ const HomeMenu = () => {
   const router = useRouter();
 
   const homeMenu: string[] = ["DISCOVER", "GENRE", "TOP CHARTS", "PODCAST"];
-  const homeIcon = [BiSearchAlt, IoMdMusicalNotes, IoMdHeadset, BsMic];
+  const homeIcon: IconType[] = [
+    BiSearchAlt,
+    IoMdMusicalNotes,
+    IoMdHeadset,
+    BsMic,
+  ];
 
   const onHandleHome = () => {
     router.push("/");

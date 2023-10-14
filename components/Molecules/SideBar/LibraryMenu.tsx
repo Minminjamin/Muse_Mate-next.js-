@@ -7,7 +7,11 @@ import List from "@/components/Atoms/Menu/MemuList";
 import styles from "../SideBar/List.module.css";
 const LibraryMenu = () => {
   const libraryMenu: string[] = ["FRIEND", "PLAYLIST", "CHAT"];
-  const libraryIcon = [CiStar, BsFillFileEarmarkPlayFill, PiChatCircleTextFill];
+  const libraryIcon: IconType[] = [
+    CiStar,
+    BsFillFileEarmarkPlayFill,
+    PiChatCircleTextFill,
+  ];
 
   return (
     <ul className={styles.list}>
