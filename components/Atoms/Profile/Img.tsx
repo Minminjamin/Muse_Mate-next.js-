@@ -2,16 +2,18 @@ import { GetServerSideProps } from "next";
 import Image from "next/image";
 import styles from "../Profile/Profile.module.css";
 
-const Img = ({
-  user,
-  widthSize,
-  heightSize,
-}: {
-  user: any;
+interface ImgProps {
+  profileImg: string;
   widthSize: number;
   heightSize: number;
-}) => {
-  const profileImg = user?.profile_img;
+}
+const Img = ({
+  // user,
+  profileImg,
+  widthSize,
+  heightSize,
+}: ImgProps) => {
+  // const profileImg: string = user?.profile_img;
 
   return (
     <Image

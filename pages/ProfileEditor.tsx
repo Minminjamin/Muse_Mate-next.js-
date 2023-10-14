@@ -8,7 +8,7 @@ const ProfileEditor = () => {
   const [userObjectId, setUserObjectId] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
-  const [profileImg, setProfileImg] = useState();
+  const [profileImg, setProfileImg] = useState<string>();
   const [file, setFile] = useState<File | null>();
   const [newProfileImgUrl, setNewProfileImgUrl] = useState<string | null>(null);
 
@@ -86,7 +86,10 @@ const ProfileEditor = () => {
       <h1>Modify Profile</h1>
       <form className={styles.wrapCont}>
         <div className={styles.img}>
-          <Img user={user} widthSize={54} heightSize={54} />
+          {profileImg && (
+            <Img profileImg={profileImg} widthSize={54} heightSize={54} />
+          )}
+
           <input type="file" onChange={onHandleChangeImg}></input>
         </div>
 
