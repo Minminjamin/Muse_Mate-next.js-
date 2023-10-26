@@ -15,7 +15,7 @@ type User = {
 };
 
 const FollowUser = () => {
-  const [input, setInput] = useState<string>();
+  const [input, setInput] = useState<string>("");
   const [searchResult, setSearchResult] = useState<User[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectUser, setSelectUser] = useState<User | null>(null);
@@ -123,16 +123,15 @@ const FollowUser = () => {
   return (
     <div>
       <PageName pageName={"SearchUser"} />
-      {input && (
-        <Search
-          value={input}
-          onHandleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setInput(e.target.value)
-          }
-          search={onUserSearch}
-          placeholder="검색할 사용자의 id(아이디)를 입력해주세요."
-        />
-      )}
+
+      <Search
+        value={input}
+        onHandleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setInput(e.target.value)
+        }
+        search={onUserSearch}
+        placeholder="검색할 사용자의 id(아이디)를 입력해주세요."
+      />
 
       <div>
         <h2>검색 결과</h2>
