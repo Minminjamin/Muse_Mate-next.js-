@@ -36,12 +36,12 @@ model Chat {
   receiver_user_id String
   created_at  DateTime @default(now())
   message String
-  room  Room  @relation(fields: [room_id], references: [id])
-  room_id String @db.ObjectId
+  // room  Room  @relation(fields: [room_id], references: [id])
+  // room_id String @db.ObjectId
 }
 
-model Room {
-  id  String  @id @default(auto()) @map("_id") @db.ObjectId
-  member_ids  String[]
-  chats Chat[]
-}
+// model Room {
+//   id  String  @id @default(auto()) @map("_id") @db.ObjectId
+//   member_ids  String[]
+//   chats Chat[]
+// }
