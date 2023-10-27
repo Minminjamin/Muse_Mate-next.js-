@@ -43,7 +43,8 @@
     "@types/next-auth": "^3.15.0",
     "@types/node": "^20.4.5",
     "@types/uuid": "^9.0.2",
-    "prisma": "^5.2.0"
+    "prisma": "^5.2.0",
+    "sass": "^1.69.5"
   },
   "description": "1. 음원 플레이리스트 공유에 중점을 둔 SNS 부재",
   "main": "next.config.js",
