@@ -38,7 +38,7 @@ const Chat = () => {
 
   const onHanldeSubmit = async () => {
     try {
-      const res = await fetch("api/postChat", {
+      await fetch("api/postChat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,8 +49,6 @@ const Chat = () => {
           message: message,
         }),
       });
-
-      if (res.ok) console.log(res);
     } catch (error) {
       console.log(error);
     }
