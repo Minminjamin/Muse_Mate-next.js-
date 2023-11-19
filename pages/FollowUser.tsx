@@ -22,7 +22,7 @@ const FollowUser = () => {
   const [userId, setUserId] = useState<string>("");
   const [isFollow, setIsFollow] = useState<boolean>(false);
 
-  const { isLoading, isError, error, data } = useUserData();
+  const { data } = useUserData();
 
   useEffect(() => {
     setUserId(data?.user_id);
@@ -53,6 +53,7 @@ const FollowUser = () => {
 
     fetchData();
   }, []);
+
   const onUserSearch = async () => {
     try {
       const res = await fetch("api/SearchUser", {
@@ -66,7 +67,6 @@ const FollowUser = () => {
       if (res.ok) {
         const data = await res.json();
         setSearchResult(data);
-        console.log(searchResult);
       }
     } catch (error) {
       console.log(error);
@@ -92,7 +92,8 @@ const FollowUser = () => {
       });
 
       if (res.ok) {
-        console.log(res);
+        setIsFollow(!isFollow);
+        // console.log(res);
       }
     } catch (error) {
       console.log(error);
@@ -113,7 +114,7 @@ const FollowUser = () => {
       });
 
       if (res.ok) {
-        console.log(res);
+        setIsFollow(!isFollow);
       }
     } catch (error) {
       console.log(error);
@@ -149,7 +150,7 @@ const FollowUser = () => {
           <h2>프로필</h2>
           <span>{selectUser.id}</span>
           <span>{selectUser.name}</span>
-          {isFollow ? (
+          {!isFollow ? (
             <button onClick={onHandleClickFollow}>Follow</button>
           ) : (
             <button onClick={onHandleClickUnFollow}>UnFollow</button>
