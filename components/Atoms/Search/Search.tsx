@@ -15,7 +15,7 @@ const Search = ({ value, onHandleChange, search, placeholder }: Search) => {
         onChange={onHandleChange}
         placeholder={placeholder}
       />
-      <button onClick={search}></button>
+      <button onClick={search}>검색</button>
     </>
   );
 };
