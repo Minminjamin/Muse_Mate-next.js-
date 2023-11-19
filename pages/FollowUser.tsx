@@ -37,7 +37,7 @@ const FollowUser = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            userId: userId,
+            // userId: userId,
             followId: selectUser?.id,
           }),
         });

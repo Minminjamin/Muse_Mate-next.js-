@@ -16,6 +16,8 @@ model User {
   name  String
   profile_img String
   user_id String
+  followers      String[] @db.ObjectId @map("followers") @default([])
+  following      String[] @db.ObjectId @map("following") @default([])
   // posts String[] @db.ObjectId
     // postIds String[] @db.ObjectId @map("posts")
     // @@index([posts], map: "posts_R")
@@ -24,10 +26,10 @@ model User {
 
 model Follow {
   id String @id @map("_id") @default(auto()) @db.ObjectId
-  user_id    String
+  // user_id    String
   follow_id  String
   following_id String
-  @@unique([user_id, follow_id]) // user_id와 follow_id의 조합이 고유해야 함
+  @@unique([ follow_id, following_id]) 
 }
 
 model Chat {

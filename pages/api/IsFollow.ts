@@ -11,8 +11,9 @@ export default async function handler(
     const { userId, followId } = req.body;
     const isFollow = await prisma.follow.findUnique({
       where: {
-        user_id_follow_id: {
-          user_id: userId,
+        follow_id_following_id: {
+          following_id: userId as string,
+          // user_id: userId,
           follow_id: followId,
         },
       },

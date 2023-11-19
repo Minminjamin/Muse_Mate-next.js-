@@ -13,7 +13,6 @@ export default async function handler(
 
     const follow = await prisma.follow.create({
       data: {
-        user_id: userId as string,
         follow_id: followId as string,
         following_id: userId as string,
       },
