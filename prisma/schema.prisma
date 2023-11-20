@@ -16,8 +16,8 @@ model User {
   name  String
   profile_img String
   user_id String
-  followers      String[] @db.ObjectId @map("followers") @default([])
-  following      String[] @db.ObjectId @map("following") @default([])
+   follower    Follow[] @relation("Following")
+  following   Follow[] @relation("Follower")
   // posts String[] @db.ObjectId
     // postIds String[] @db.ObjectId @map("posts")
     // @@index([posts], map: "posts_R")
@@ -29,6 +29,8 @@ model Follow {
   // user_id    String
   follow_id  String
   following_id String
+  following    User     @relation("Following", fields: [following_id], references: [id])
+  follower     User     @relation("Follower", fields: [follow_id], references: [id])
   @@unique([ follow_id, following_id]) 
 }
 
