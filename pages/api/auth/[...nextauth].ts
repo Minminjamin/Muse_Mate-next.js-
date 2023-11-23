@@ -75,8 +75,8 @@ export const authOptions: NextAuthOptions = {
               id: randomId,
               name: user.name!,
               email: user.email!,
-              profile_img: "",
-              user_id: userId,
+              profileImg: "",
+              userId: userId,
             },
           });
 
@@ -87,7 +87,7 @@ export const authOptions: NextAuthOptions = {
 
             db_user = await prisma.user.update({
               where: { email: user.email || "" },
-              data: { profile_img: imgUrl },
+              data: { profileImg: imgUrl },
             });
           } catch (error) {
             console.log("이미지 업로드 및 저장 에러:", error);
