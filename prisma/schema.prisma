@@ -1,5 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// schema.prisma
 
 generator client {
   provider = "prisma-client-js"
@@ -11,41 +10,62 @@ datasource db {
 }
 
 model User {
-  id    String   @id @default(auto()) @map("_id") @db.ObjectId
-  email String   @unique(map: "email_U")
-  name  String
-  profile_img String
-  user_id String
-   follower    Follow[] @relation("Following")
-  following   Follow[] @relation("Follower")
-  // posts String[] @db.ObjectId
-    // postIds String[] @db.ObjectId @map("posts")
-    // @@index([posts], map: "posts_R")
-    // @@map("users")
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  email      String @unique(map: "email_U")
+  name       String
+  profileImg String
+  userId     String
+
+  follower  Follow[]   @relation("Following")
+  following Follow[]   @relation("Follower")
+  playlists Playlist[] @relation("PlaylistUser")
+
+  // @@unique([userId])
 }
 
 model Follow {
-  id String @id @map("_id") @default(auto()) @db.ObjectId
-  // user_id    String
-  follow_id  String
-  following_id String
-  following    User     @relation("Following", fields: [following_id], references: [id])
-  follower     User     @relation("Follower", fields: [follow_id], references: [id])
-  @@unique([ follow_id, following_id]) 
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  followerId  String @db.ObjectId
+  followingId String @db.ObjectId
+  follower    User   @relation("Following", fields: [followerId], references: [id])
+  following   User   @relation("Follower", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId])
+}
+
+model Playlist {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String @db.ObjectId
+  name        String
+  description String
+  songs       Song[] @relation("PlaylistSongs")
+  user        User   @relation("PlaylistUser", fields: [userId], references: [id])
+
+  @@unique([userId, name])
+}
+
+model Song {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  artist     String
+  playlistId String   @db.ObjectId
+  playlist   Playlist @relation("PlaylistSongs", fields: [playlistId], references: [id])
+}
+
+model Room {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  user1Id   String
+  user2Id   String
+  messages  Chat[]   @relation("ChatRoomMessages")
 }
 
 model Chat {
-  id  String   @id @map("_id") @default(auto()) @db.ObjectId
-  sender_user_id  String
-  receiver_user_id String
-  created_at  DateTime @default(now())
-  message String
-  // room  Room  @relation(fields: [room_id], references: [id])
-  // room_id String @db.ObjectId
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  senderId   String
+  receiverId String
+  createdAt  DateTime @default(now())
+  message    String
+  roomId     String   @db.ObjectId
+  room       Room     @relation("ChatRoomMessages", fields: [roomId], references: [id])
 }
-
-// model Room {
-//   id  String  @id @default(auto()) @map("_id") @db.ObjectId
-//   member_ids  String[]
-//   chats Chat[]
-// }
