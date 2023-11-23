@@ -14,8 +14,8 @@ export default async function handler(
     // 1. 채팅 메시지를 Prisma를 사용하여 생성하고 Room과의 관계를 설정합니다.
     const chat = await prisma.chat.create({
       data: {
-        sender_user_id: senderUserId as string,
-        receiver_user_id: receiverUserId as string,
+        senderId: senderUserId as string,
+        receiverId: receiverUserId as string,
         message: message as string,
       },
     });

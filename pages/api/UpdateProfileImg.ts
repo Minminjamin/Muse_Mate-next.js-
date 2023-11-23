@@ -53,7 +53,7 @@ export default async function handler(
         email: userEmail,
       },
       data: {
-        profile_img: data.secure_url,
+        profileImg: data.secure_url,
       },
     });
 

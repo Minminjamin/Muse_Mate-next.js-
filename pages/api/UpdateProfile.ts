@@ -34,7 +34,7 @@ export default async function handler(
         id: id,
       },
       data: {
-        user_id: user_id,
+        userId: user_id,
         name: name,
       },
     });

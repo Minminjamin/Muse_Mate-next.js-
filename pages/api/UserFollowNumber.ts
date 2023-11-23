@@ -16,13 +16,13 @@ export default async function handler(
 
       const followerCount = await prisma.follow.count({
         where: {
-          follow_id: userId as string,
+          followerId: userId as string,
         },
       });
 
       const followingCount = await prisma.follow.count({
         where: {
-          following_id: userId as string,
+          followingId: userId as string,
         },
       });
 

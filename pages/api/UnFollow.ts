@@ -12,9 +12,9 @@ export default async function handler(
 
     const unFollow = await prisma.follow.delete({
       where: {
-        follow_id_following_id: {
-          following_id: userId as string,
-          follow_id: followId as string,
+        followerId_followingId: {
+          followingId: userId as string,
+          followerId: followId as string,
         },
       },
     });
