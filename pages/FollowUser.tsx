@@ -1,5 +1,6 @@
 import Search from "@/components/Atoms/Search/Search";
 import PageName from "@/components/Atoms/Title/PageName";
+import Chat from "@/components/Template/Chat/Chat";
 import { useUserData } from "@/hooks/useUserData";
 
 import React, {
@@ -22,6 +23,7 @@ const FollowUser = () => {
   const [userId, setUserId] = useState<string>("");
   const [isFollow, setIsFollow] = useState<boolean>(false);
 
+  const [chatId, setChatId] = useState<string>("");
   const { data } = useUserData();
 
   useEffect(() => {
@@ -156,9 +158,11 @@ const FollowUser = () => {
             <button onClick={onHandleClickUnFollow}>UnFollow</button>
           )}
 
-          <button>Chat</button>
+          <button onClick={() => setChatId(selectUser.id)}>Chat</button>
         </>
       )}
+
+      <Chat receiver={input} />
     </div>
   );
 };

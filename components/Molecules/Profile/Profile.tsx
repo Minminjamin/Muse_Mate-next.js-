@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 interface User {
   user: object;
   name: string;
-  profile_img: string;
+  profileImg: string;
 }
 
 // const prisma = new PrismaClient();
@@ -19,7 +19,7 @@ interface User {
 const Profile = ({ user }: { user: User }) => {
   return (
     <div className={styles.wrap}>
-      <Img profileImg={user.profile_img} heightSize={54} widthSize={54} />
+      <Img profileImg={user.profileImg} heightSize={54} widthSize={54} />
       <div className={styles.name}>
         <Name name={user.name} />
       </div>

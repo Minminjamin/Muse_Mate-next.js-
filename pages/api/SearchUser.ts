@@ -12,7 +12,7 @@ export default async function handler(
 
     const user = await prisma.user.findMany({
       where: {
-        user_id: searchUserId,
+        userId: searchUserId,
       },
     });
 
