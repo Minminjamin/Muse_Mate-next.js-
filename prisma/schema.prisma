@@ -58,6 +58,8 @@ model Room {
   user1Id   String
   user2Id   String
   messages  Chat[]   @relation("ChatRoomMessages")
+
+  @@unique([user1Id, user2Id])
 }
 
 model Chat {
