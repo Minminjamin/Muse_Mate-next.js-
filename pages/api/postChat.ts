@@ -9,7 +9,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const { senderUserId, receiverUserId, message } = req.body;
+    const { senderUserId, receiverUserId, message, roomId } = req.body;
 
     // 1. 채팅 메시지를 Prisma를 사용하여 생성하고 Room과의 관계를 설정합니다.
     const chat = await prisma.chat.create({
@@ -17,6 +17,7 @@ export default async function handler(
         senderId: senderUserId as string,
         receiverId: receiverUserId as string,
         message: message as string,
+        roomId: roomId,
       },
     });
 

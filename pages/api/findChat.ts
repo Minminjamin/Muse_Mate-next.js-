@@ -12,12 +12,12 @@ export default async function handler(
   const chatData = await prisma.chat.findMany({
     select: {
       message: true,
-      sender_user_id: true,
-      receiver_user_id: true,
+      senderId: true,
+      receiverId: true,
     },
     where: {
-      sender_user_id: senderUserId as string,
-      receiver_user_id: receiverUserId as string,
+      senderId: senderUserId as string,
+      receiverId: receiverUserId as string,
     },
   });
 
