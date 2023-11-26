@@ -30,31 +30,31 @@ const FollowUser = () => {
     setUserId(data?.user_id);
   }, [data]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("api/IsFollow", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            // userId: userId,
-            followId: selectUser?.id,
-          }),
-        });
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch("api/IsFollow", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           // userId: userId,
+  //           followId: selectUser?.id,
+  //         }),
+  //       });
 
-        if (res.ok) {
-          const data = await res.json();
-          setIsFollow(data.isFollow);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  //       if (res.ok) {
+  //         const data = await res.json();
+  //         setIsFollow(data.isFollow);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const onUserSearch = async () => {
     try {

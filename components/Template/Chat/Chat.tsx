@@ -41,7 +41,7 @@ const Chat = ({ receiver }: { receiver: string }) => {
     if (roomId === "") {
       createChatRoom();
     }
-  }, [data]);
+  }, [receiver]);
 
   // 내가 속한 db 방의 데이터를 가져오는 함수
   useEffect(() => {
@@ -86,48 +86,23 @@ const Chat = ({ receiver }: { receiver: string }) => {
 
     const channel = pusher.subscribe("chat");
     channel.bind("hello", (item: any) => {
-      const parsedComments = JSON.parse(item.message);
+      try {
+        const parsedComments = JSON.parse(item.message);
 
-      setTotalComments((prev: any) => [...prev, parsedComments]);
+        setTotalComments((prev: any) => [...prev, parsedComments]);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
     });
 
     return () => {
       pusher.unsubscribe("chat");
     };
-  }, [data]);
+  }, []);
 
-  // useEffect(() => {
-  //   if (receiver !== "") {
-  //     const isChat = async () => {
-  //       console.log("isChat 함수 실행 중");
-  //       console.log("user1Id", data.userId);
-  //       console.log("user2Id", receiver);
-  //       try {
-  //         const res = await fetch("/api/isChat", {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({ user1Id: data.userId, user2Id: receiver }),
-  //         });
-
-  //         if (res.ok) {
-  //           console.log("isChat 결과", await res.json());
-  //         }
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     };
-
-  //     isChat();
-  //   }
-  // }, [data, receiver]);
-
-  // useEffect(() => {
-  //   console.log("receiver", receiver);
-  // }, [receiver]);
   const onHanldeSubmit = async () => {
     try {
+      console.log("postChat 함수가 실행 중");
       await fetch("api/postChat", {
         method: "POST",
         headers: {
@@ -155,10 +130,10 @@ const Chat = ({ receiver }: { receiver: string }) => {
             <span>{item.message}</span>
           </div>
         ))}
-      <form>
+      <>
         <input type="text" onChange={(e) => setMessage(e.target.value)} />
-        <button onClick={() => onHanldeSubmit}>전송</button>
-      </form>
+        <button onClick={onHanldeSubmit}>전송</button>
+      </>
     </div>
   );
 };
